@@ -435,6 +435,22 @@
       .hide[data-v-5f0b9ba1] {
         display: none;
       }
+      .trans select {
+        background-color: #fff !important;
+      }
+    </style>
+    <style>
+      @media screen and (max-width: 768px) {
+        body {
+          font-size: 30px;
+        }
+        .ctn-invesment-part {
+          width: 48% !important;
+        }
+        .ref-link {
+          font-size: 20px;
+        }
+      }
     </style>
   </head>
 
@@ -443,6 +459,12 @@
     class="loginarea"
     cz-shortcut-listen="true"
   >
+    <div
+      style="z-index: 1000; position: relative"
+      class="trans"
+      id="google_translate_element"
+    ></div>
+
     <div class="wrapper-account">
       <div class="headerContainer">
         <div class="headerInner">
@@ -480,10 +502,10 @@
             </div>
             <div class="affiliate_top" style="font-size: 0.8em">
               Affiliate Link:<a
-                href="http://MaverickXchange.us?ref=<%= req.user.email%>"
+                href="http://Maverick.com?ref=<%= req.user.email%>"
                 class="ref-link"
               >
-                http://MaverickXchange.us?ref=<%= req.user.email%></a
+                http://Maverick.com?ref=<%= req.user.email%></a
               >
             </div>
           </div>
@@ -612,7 +634,10 @@
                 </div>
                 <div class="ctn-invesment-part ctn-invesment-part2">
                   <span class="imageblock"></span>
-                  <h4><%= req.user.currency%> <%=comma(req.user.balance)%></h4>
+                  <h4>
+                    <%= req.user.currency%>
+                    <%=comma(req.user.pending_withdrawal)%>
+                  </h4>
                   <p>PENDING</p>
                 </div>
               </div>
@@ -642,7 +667,6 @@
         </div>
       </div>
     </div>
-    <div id="scrnli_recorder_root"></div>
     <style>
       .tradingview-widget-copyright {
         font-size: 13px !important;
@@ -797,43 +821,24 @@
       });
     </script>
 
-    <!-- <script src="//code.jivosite.com/widget/lsCCAseRue" async></script> -->
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          { pageLanguage: "en" },
+          "google_translate_element"
+        );
+      }
+    </script>
+
+    <script
+      type="text/javascript"
+      src="https://translate.google.com/translate_a/element.js?
+cb=googleTranslateElementInit"
+    ></script>
+
     <script
       src="//code.tidio.co/vrcc1xllhcsedvy9gc7gsilcosmjfqa8.js"
       async
     ></script>
-    <!-- <script
-      src="//code.tidio.co/a3g4pcb8qnndrcs3lhtci1k4djq7myr6.js"
-      async
-    ></script> -->
-    <!-- <script src="//code.tidio.co/akme7mmyw1bngz8ygjjv8ojtnamx01ol.js" async></script> -->
-
-    <!-- <script src="//code.tidio.co/yikkcfjemofj4j4djuhrwud0yr8zyhdh.js" async></script> -->
-    <!-- Begin of Chaport Live Chat code -->
-    <!-- <script type="text/javascript">
-    (function(w,d,v3){
-    w.chaportConfig = {
-      appId : '63fbf2554f5ce14c416a750c'
-    };
-  
-  if(w.chaport)return;v3=w.chaport={};v3._q=[];v3._l={};v3.q=function(){v3._q.push(arguments)};v3.on=function(e,fn){if(!v3._l[e])v3._l[e]=[];v3._l[e].push(fn)};var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://app.chaport.com/javascripts/insert.js';var ss=d.getElementsByTagName('script')[0];ss.parentNode.insertBefore(s,ss)})(window, document);
-  </script> -->
-    <!-- End of Chaport Live Chat code -->
-    <!-- GetButton.io widget -->
-    <!-- <script type="text/javascript">
-    (function () {
-      var options = {
-        whatsapp: "+13156908959", // WhatsApp number
-        call_to_action: "Message us", // Call to action
-        button_color: "#FF6550", // Color of button
-        position: "left", // Position may be 'right' or 'left'
-      };
-      var proto = 'https:', host = "getbutton.io", url = proto + '//static.' + host;
-      var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
-      s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
-      var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
-    })();
-  </script> -->
-    <!-- /GetButton.io widget -->
   </body>
 </html>

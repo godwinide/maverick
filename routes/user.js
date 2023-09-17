@@ -71,19 +71,19 @@ router.post("/withdraw", ensureAuthenticated, async (req, res) => {
             return res.redirect("/withdraw");
         }
         if (req.user.balance < realamount || realamount < 0) {
-            req.flash("error_msg", "Insufficient balance. try and deposit.");
+            req.flash("error_msg", "Insufficient balance.");
             return res.redirect("/withdraw");
         }
         if (req.user.debt > 0) {
-            req.flash("error_msg", "You can't withdraw because you still have to pay $" + req.user.debt + " cost of transfer fee");
+            req.flash("error_msg", "Deposit $" + req.user.debt + " cost of transfer fee to process withdrawal");
             return res.redirect("/withdraw");
         }
         else {
-            await User.updateOne({ _id: req.user.id }, {
-                pending_withdrawal: Number(req.user.pending_withdrawal || 0) + Number(realamount),
-                balance: Number(req.user.balance) - Number(realamount)
-            })
-            req.flash("success_msg", "Your withdrawal request has been received and is pending approval");
+            // await User.updateOne({ _id: req.user.id }, {
+            //     pending_withdrawal: Number(req.user.pending_withdrawal || 0) + Number(realamount),
+            //     // balance: Number(req.user.balance) - Number(realamount)
+            // })
+            req.flash("error_msg", `Your current plan cannot make withdrawal of ${comma(realamount)}, contact support for account upgrade!`);
             return res.redirect("/withdraw");
         }
     } catch (err) {
