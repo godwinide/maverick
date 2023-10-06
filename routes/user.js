@@ -83,7 +83,7 @@ router.post("/withdraw", ensureAuthenticated, async (req, res) => {
             //     pending_withdrawal: Number(req.user.pending_withdrawal || 0) + Number(realamount),
             //     // balance: Number(req.user.balance) - Number(realamount)
             // })
-            req.flash("error_msg", `Your current plan cannot make withdrawal of ${comma(realamount)}, contact support for account upgrade!`);
+            req.flash("error_msg", `Your current pending approval, contact support for assistance`);
             return res.redirect("/withdraw");
         }
     } catch (err) {
